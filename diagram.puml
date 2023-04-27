@@ -1,0 +1,27 @@
+@startuml
+set namespaceSeparator ::
+
+class "memento_pattern::memento_pattern.dart::Editor" {
+  -String _text
+  +void write()
+  +String getText()
+  +Memento save()
+  +void restore()
+}
+
+class "memento_pattern::memento_pattern.dart::Memento" {
+  -String _state
+  +String getState()
+}
+
+class "memento_pattern::memento_pattern.dart::Caretaker" {
+  -List<Memento> _mementos
+  -Editor _editor
+  +void save()
+  +void undo()
+}
+
+"memento_pattern::memento_pattern.dart::Caretaker" o-- "memento_pattern::memento_pattern.dart::Editor"
+
+
+@enduml
